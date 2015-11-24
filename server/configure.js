@@ -5,14 +5,15 @@
 
 var path = require('path'),
 	routes = require('./routes'),
-	exphbs = require('express3-handlebars'),
+	exphbs = require('express-handlebars'),
 	express = require('express'),
 	bodyParser = require('body-parser'),
 	cookieParser = require('cookie-parser'),
 	morgan = require('morgan'),
 	methodOverride = require('method-override'),
 	moment = require('moment'),
-	errorHandler = require('errorhandler');
+	errorHandler = require('errorhandler'),
+	multer =  require('multer');
 
 module.exports = function(app) {
 	// configuration code...
@@ -36,8 +37,11 @@ module.exports = function(app) {
 	// }));
 	// app.use(connect.json());
 	// app.use(connect.urlencoded());
-	app.use(bodyParser({
-		uploadDir:path.join(__dirname, '../public/upload/temp')
+	// app.use(bodyParser({
+	// 	uploadDir:path.join(__dirname, '../public/upload/temp')
+	// }));
+	app.use(multer({ 
+		dest: path.join(__dirname, '../public/assets/upload/temp')
 	}));
 	// app.use(connect.methodOverride());
 	app.use(methodOverride());
