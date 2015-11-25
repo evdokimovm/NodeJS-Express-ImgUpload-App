@@ -41,7 +41,7 @@ module.exports = function(app) {
 	// 	uploadDir:path.join(__dirname, '../public/upload/temp')
 	// }));
 	app.use(multer({ 
-		dest: path.join(__dirname, '../public/assets/upload/temp')
+		dest: path.join(__dirname, '../public/upload/temp')
 	}));
 	// app.use(connect.methodOverride());
 	app.use(methodOverride());
