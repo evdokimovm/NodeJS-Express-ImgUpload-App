@@ -45,6 +45,10 @@ module.exports = function(app) {
 	}));
 	// app.use(connect.methodOverride());
 	app.use(methodOverride());
+
+	app.use(bodyParser.json());
+	app.use(bodyParser.urlencoded({ extended: false }))
+	
 	// app.use(connect.cookieParser('some-secret-value-here'));
 	app.use(cookieParser('some-secret-value-here'));
 	// app.use(app.router);
