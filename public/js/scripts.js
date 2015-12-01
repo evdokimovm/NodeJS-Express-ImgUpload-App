@@ -14,4 +14,25 @@ $(document).ready(function() {
 		});
 	});
 
+	$('#btn-delete').on('click', function(event) {
+		event.preventDefault();
+		var $this = $(this);
+
+		var remove = confirm('Are you sure you want to delete this image?');
+
+		if (remove) {
+			var imgId = $(this).data('id');
+			$.ajax({
+				url: '/images/' + imgId,
+				type: 'DELETE'
+			}).done(function(result) {
+				if (result) {
+					$this.removeClass('btn-danger').addClass('btnsuccess');
+					$this.find('i').removeClass('fa-times').addClass('facheck');
+					$this.append('<span> Deleted!</span>');
+				}
+			});
+		}
+	});
+	
 });
